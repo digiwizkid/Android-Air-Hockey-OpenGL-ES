@@ -82,8 +82,8 @@ public class ShaderHelper {
         final int[] linkStatus = new int[1];
         glGetProgramiv(programObjectId, GL_LINK_STATUS, linkStatus, 0);
 
-        if (LoggerConfig.ON)  {
-            Log.i(TAG, "Results of linking program: \n"+glGetProgramInfoLog(programObjectId));
+        if (LoggerConfig.ON) {
+            Log.i(TAG, "Results of linking program: \n" + glGetProgramInfoLog(programObjectId));
         }
 
         if (linkStatus[0] == 0) {
@@ -102,9 +102,27 @@ public class ShaderHelper {
         final int[] validateStatus = new int[1];
 
         glGetProgramiv(programObjectId, GL_VALIDATE_STATUS, validateStatus, 0);
-        Log.i(TAG, "Result of validate program: "+validateStatus[0] + "\nLog: "+glGetProgramInfoLog(programObjectId));
+        Log.i(TAG, "Result of validate program: " + validateStatus[0] + "\nLog: " + glGetProgramInfoLog(programObjectId));
 
         return validateStatus[0] != 0;
+    }
+
+    public static int buildProgram(String vertexShaderSource,
+                                   String fragmentShaderSource) {
+        int program;
+
+        // Compile the shaders.
+        int vertexShader = compileVertexShader(vertexShaderSource);
+        int fragmentShader = compileFragmentShader(fragmentShaderSource);
+
+        // Link them into a shader program.
+        program = linkProgram(vertexShader, fragmentShader);
+
+        if (LoggerConfig.ON) {
+            validateProgram(program);
+        }
+
+        return program;
     }
 
 }
