@@ -1,14 +1,13 @@
 package com.airhockey.android.objects;
 
 import com.airhockey.android.data.VertexArray;
-import com.airhockey.android.programs.TextureShaderProgram;
+import com.airhockey.android.programs.TextureProgram;
 
 import static android.opengl.GLES20.GL_TRIANGLE_FAN;
 import static android.opengl.GLES20.glDrawArrays;
 import static com.airhockey.android.Constants.BYTES_PER_FLOAT;
 
 public class Table {
-
     private static final int POSITION_COMPONENT_COUNT = 2;
     private static final int TEXTURE_COORDINATES_COMPONENT_COUNT = 2;
     private static final int STRIDE = (POSITION_COMPONENT_COUNT
@@ -26,22 +25,20 @@ public class Table {
     };
 
     private final VertexArray vertexArray;
-
     public Table() {
         vertexArray = new VertexArray(VERTEX_DATA);
     }
-
-    public void bindData(TextureShaderProgram textureShaderProgram) {
+    public void bindData(TextureProgram textureProgram) {
         vertexArray.setVertexAttribPointer(
                 0,
-                textureShaderProgram.getPositionAttributeLocation(),
+                textureProgram.getPositionAttributeLocation(),
                 POSITION_COMPONENT_COUNT,
                 STRIDE
         );
 
         vertexArray.setVertexAttribPointer(
                 POSITION_COMPONENT_COUNT,
-                textureShaderProgram.getTextureCoordinatesAttributeLocation(),
+                textureProgram.getTextureCoordinatesAttributeLocation(),
                 TEXTURE_COORDINATES_COMPONENT_COUNT,
                 STRIDE
         );

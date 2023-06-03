@@ -13,7 +13,7 @@ import static android.opengl.GLES20.glGetUniformLocation;
 import static android.opengl.GLES20.glUniform1i;
 import static android.opengl.GLES20.glUniformMatrix4fv;
 
-public class TextureShaderProgram extends ShaderProgram {
+public class TextureProgram extends ShaderProgram {
 
     // Uniform locations
     private final int uMatrixLocation;
@@ -23,7 +23,7 @@ public class TextureShaderProgram extends ShaderProgram {
     private final int aPositionLocation;
     private final int aTextureCoordinatesLocation;
 
-    public TextureShaderProgram(Context context) {
+    public TextureProgram(Context context) {
         super(context, R.raw.texture_vertex_shader,
                 R.raw.texture_fragment_shader);
 

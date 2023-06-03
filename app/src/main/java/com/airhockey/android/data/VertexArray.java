@@ -10,7 +10,6 @@ import static android.opengl.GLES20.glVertexAttribPointer;
 import static com.airhockey.android.Constants.BYTES_PER_FLOAT;
 
 public class VertexArray {
-
     private final FloatBuffer floatBuffer;
 
     public VertexArray(float[] vertexData) {
