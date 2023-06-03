@@ -16,7 +16,7 @@ public class Table {
     private static final float[] VERTEX_DATA = {
     // Order of coordinates: X, Y, S, T
     // Triangle Fan
-            0f, 0f, 0.5f, 0.5f
+            0f, 0f, 0.5f, 0.5f,
             -0.5f, -0.8f, 0f, 0.9f,
             0.5f, -0.8f, 1f, 0.9f,
             0.5f, 0.8f, 1f, 0.1f,
